@@ -1,51 +1,187 @@
-# ☕ Evolución de Interfaces de Usuario en Java Swing
+# Gestor de Usuarios - Tema 2: Paneles y Layouts
 
-Este repositorio contiene tres versiones de una aplicación de escritorio desarrollada con Java Swing, mostrando la progresión desde un diseño simple y lineal hasta una interfaz compleja y funcional con múltiples componentes y pestañas.
+## 📋 Descripción del Proyecto
 
-Cada archivo Java representa una fase de la evolución en el diseño de interfaces de usuario.
-
----
-
-## Fases del Proyecto
-
-### 1. Interfaz 1 (`InicioSesion.java`)
-
-La versión más básica y fundamental del formulario de inicio de sesión.
-
-* **Diseño:** Utiliza un `GridLayout` simple que distribuye los componentes en una cuadrícula fija, resultando en un diseño rígido y lineal.
-* **Componentes Clave:** `JFrame`, `JLabel`, `JTextField`, `JPasswordField`, `JCheckBox` y `JButton`.
-
-### 2. Interfaz 2 (`Interfaz2.java`)
-
-Introduce una mejora significativa en la organización al utilizar **paneles** (`JPanel`).
-
-* **Diseño:** Utiliza un `BorderLayout` para el panel principal y un `GridLayout` para el centro, permitiendo dividir la interfaz en áreas lógicas (superior, central, inferior).
-* **Componentes Adicionales:** Se añaden `JRadioButton` (para opciones como "Recordar usuario") y `JComboBox` (para selección de idioma).
-
-### 3. Interfaz 3 (`Interfaz3.java`)
-
-La versión más avanzada y funcional, con una estructura modular y elementos dinámicos.
-
-* **Funcionalidad Destacada:** Implementa **`JTabbedPane`** para agrupar las vistas de "Login" y "Registro" en una sola ventana.
-* **Componentes Avanzados:**
-    * `JProgressBar`: Indica el estado de una tarea (como una simulación de carga).
-    * `JSpinner`: Permite la selección controlada de valores numéricos (ej. edad).
-* **Estructura del Código:** El código se modulariza en métodos (`createLoginPanel`, `createRegistrationPanel`), facilitando la lectura y el mantenimiento.
+Aplicación de escritorio desarrollada en Java Swing que implementa una interfaz profesional de gestión de usuarios utilizando múltiples layouts y componentes avanzados. Este proyecto demuestra el uso correcto de `BorderLayout`, `FlowLayout`, `GridLayout` y `GridBagLayout` en una única ventana. Incluye un formulario para ingresar datos de usuarios, un panel de navegación lateral y un área de pestañas para resúmenes, junto con botones de acción en la parte inferior.
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto
+## 🎯 Objetivos de Aprendizaje
 
-Para compilar y ejecutar las interfaces:
-
-1.  Clona el repositorio en tu máquina local.
-2.  Abre el proyecto en **IntelliJ IDEA** (o tu IDE de Java preferido).
-3.  Ejecuta el método `main` de la clase que desees probar: `InicioSesion.java`, `Interfaz2.java`, o `Interfaz3.java`.
+- Diseñar interfaces a partir de wireframes
+- Elegir conscientemente el número de `JPanel` y layouts apropiados
+- Dominar el uso de múltiples layouts en una sola ventana
+- Aplicar buenas prácticas en distribución y comportamiento responsive
 
 ---
 
-## 🛠️ Sobre el Repositorio
+## 🏗️ Estructura de Contenedores
 
-Este proyecto fue subido usando la herramienta de control de versiones **Git** integrada en IntelliJ IDEA.
+```
+JFrame (BorderLayout)
+ ├─ WEST: panelNav (GridLayout 5×1)
+ │   ├─ JButton "Dashboard"
+ │   ├─ JButton "Usuarios"
+ │   ├─ JButton "Informes"
+ │   ├─ JButton "Ajustes"
+ │   └─ JButton "Ayuda"
+ │
+ ├─ CENTER: panelMain (BorderLayout)
+ │   ├─ NORTH: panelForm (GridBagLayout)
+ │   │   ├─ Fila 0: JLabel "Nombre:" | JTextField
+ │   │   ├─ Fila 1: JLabel "Email:" | JTextField
+ │   │   ├─ Fila 2: JLabel "Rol:" | JTextField
+ │   │   ├─ Fila 3: JLabel "Activo:" | JCheckBox
+ │   │   └─ Fila 4: JLabel "Notas:" | JTextArea
+ │   │
+ │   └─ CENTER: pestañas (JTabbedPane)
+ │       ├─ Pestaña "Resumen" (JPanel con JLabel)
+ │       └─ Pestaña "Detalles" (JPanel con JLabel)
+ │
+ └─ SOUTH: south (FlowLayout CENTER)
+     ├─ JButton "Cancelar"
+     ├─ JButton "Limpiar"
+     └─ JButton "Guardar"
+```
 
-* **Autor:** AlejandroBOu
+---
+
+## 🎨 Wireframe
+
+![Wireframe del Gestor de Usuarios](src/main/resources/wireframe_login.png)
+
+*Boceto inicial de la distribución de componentes en la interfaz*
+
+---
+
+## 📐 Justificación de Layouts
+
+### BorderLayout (Ventana Principal)
+**¿Por qué?** 
+- Permite dividir claramente la ventana en 3 zonas principales (West, Center, South), ideal para estructuras con navegación lateral, área central de contenido y footer con acciones.
+
+### GridLayout (Panel de Navegación)
+**¿Por qué?** 
+- Los 5 botones de navegación tienen el mismo tamaño y se distribuyen uniformemente en una columna (5×1), perfecto para menús verticales.
+
+### BorderLayout (Panel Principal Central)
+**¿Por qué?** 
+- Divide el área central en Norte (formulario) y Centro (pestañas), permitiendo un flujo lógico de entrada de datos seguido de visualización.
+
+### GridBagLayout (Formulario)
+**¿Por qué?** 
+- Ofrece control total sobre la posición, tamaño y comportamiento de redimensionado de cada campo del formulario. Permite que componentes como el JTextArea de notas ocupen espacio horizontal.
+
+### FlowLayout (Botonera Inferior)
+**¿Por qué?** 
+- Permite alinear los botones de acción de forma centrada con espaciado uniforme, facilitando una distribución equilibrada.
+
+---
+
+## ⚙️ Propiedades Clave Utilizadas
+
+| Componente | Propiedad | Valor | Justificación |
+|------------|-----------|-------|---------------|
+| **panelNav** | Layout | GridLayout(5,1,0,5) | 5 botones uniformes en vertical con separación |
+| **panelNav** | Background | Color(0xECECEC) | Fondo gris claro para contraste |
+| **Botones nav** | Background | Color.yellow (primero: accentYellow) | Destaca el botón activo |
+| **Botones nav** | Border | LineBorder(grisMedio,1,true) | Bordes redondeados para estilo moderno |
+| **panelForm** | Layout | GridBagLayout | Control preciso de posicionamiento |
+| **Campos formulario** | weightx | (implícito 1.0) | Se estiran horizontalmente |
+| **gbc** | fill | HORIZONTAL | Ocupan todo el ancho disponible |
+| **gbc** | insets | (5,5,5,5) | Márgenes uniformes |
+| **Etiquetas** | anchor | WEST | Alineadas a la izquierda |
+| **JTextArea (Notas)** | rows/columns | 3,20 | Tamaño inicial fijo para multilínea |
+| **pestañas** | (JTabbedPane) | - | Navegación entre vistas de resumen |
+| **south** | alignment | CENTER | Botones centrados para balance |
+| **Botones acción** | Background | red/yellow/blue | Colores distintivos por función |
+| **Todos los componentes** | Font | SansSerif, PLAIN, 14 | Consistencia tipográfica |
+
+---
+
+## 📸 Capturas de Pantalla
+
+### Vista General
+![Vista general de la aplicación](src/main/resources/captura-general.png)
+
+### Vista Redimensionada
+![Comportamiento responsive](src/main/resources/captura-redimensionada.png)
+*Observar cómo el formulario y las pestañas crecen proporcionalmente*
+
+### JTabbedPane - Pestaña Resumen
+![Pestaña Resumen](src/main/resources/captura-resumen.png)
+
+### JTabbedPane - Pestaña Detalles
+![Pestaña Detalles](src/main/resources/captura-detalles.png)
+
+---
+
+## 🔄 Comportamiento al Redimensionar
+
+### Componentes que Crecen
+- ✅ **Formulario Central** (HORIZONTAL fill): Se expande horizontalmente
+- ✅ **Pestañas Centrales**: Crece para aprovechar el espacio disponible
+- ✅ **JTextArea de Notas**: Mantiene tamaño pero se adapta al contenedor
+
+### Componentes Estables
+- 🔒 **Panel de Navegación (WEST)**: Mantiene su ancho preferido
+- 🔒 **Botonera (SOUTH)**: Mantiene su altura, botones centrados
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Java SE** (JDK 11+)
+- **Swing** (javax.swing)
+
+---
+
+## 📦 Estructura de Archivos
+
+```
+Ejercicio_Tema_2_Paneles_Layouts_como_profesionales/
+├── src/
+│   └── GestorUsuarios.java        # Lógica de la ventana principal
+├── resources/
+│   ├── wireframe_login.png        # Wireframe inicial
+│   └── captura-*.png              # Capturas de pantalla
+└── README.md
+```
+
+---
+
+## 🚀 Cómo Ejecutar
+
+1. Compilar y ejecutar el código Java directamente:
+```bash
+javac GestorUsuarios.java
+java GestorUsuarios
+```
+
+O, si usas un IDE como IntelliJ IDEA o Eclipse:
+
+2. Abrir el archivo `GestorUsuarios.java`
+
+3. Ejecutar la clase `GestorUsuarios`
+
+El `main` inicia la aplicación en el EDT (Event Dispatch Thread) para threading seguro.
+
+---
+
+## 👤 Autor
+
+**Gabriel Sánchez Heredia**
+- GitHub: [@gabiisnchez](https://github.com/gabiisnchez)
+- Email: gabiisnchez@proton.me
+
+---
+
+## 📄 Licencia
+
+Este proyecto fue desarrollado como parte del material educativo del curso de Desarrollo de Interfaces.
+
+---
+
+## 🙏 Agradecimientos
+
+Proyecto realizado para la asignatura de Desarrollo de Interfaces - Tema 2: "Paneles y Layouts como profesionales"
