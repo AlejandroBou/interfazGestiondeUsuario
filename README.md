@@ -104,7 +104,6 @@ JFrame (BorderLayout)
 
 ### Vista Redimensionada
 ![Comportamiento responsive](capturas/captura-en-proceso)
-*Observar cómo el formulario y las pestañas crecen proporcionalmente*
 
 ---
 
