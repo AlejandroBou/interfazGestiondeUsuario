@@ -127,20 +127,6 @@ JFrame (BorderLayout)
 
 ---
 
-## 📦 Estructura de Archivos
-
-```
-Ejercicio_Tema_2_Paneles_Layouts_como_profesionales/
-├── src/
-│   └── GestorUsuarios.java        # Lógica de la ventana principal
-├── resources/
-│   ├── wireframe_login.png        # Wireframe inicial
-│   └── captura-*.png              # Capturas de pantalla
-└── README.md
-```
-
----
-
 ## 🚀 Cómo Ejecutar
 
 1. Compilar y ejecutar el código Java directamente:
