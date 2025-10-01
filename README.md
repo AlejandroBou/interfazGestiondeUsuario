@@ -50,8 +50,6 @@ JFrame (BorderLayout)
 
 ![Wireframe del Gestor de Usuarios](capturas/imagen_2025-10-01_194839839.png)
 
-*Boceto inicial de la distribución de componentes en la interfaz*
-
 ---
 
 ## 📐 Justificación de Layouts
@@ -102,17 +100,11 @@ JFrame (BorderLayout)
 ## 📸 Capturas de Pantalla
 
 ### Vista General
-![Vista general de la aplicación](src/main/resources/captura-general.png)
+![Vista general de la aplicación](capturas/Captura de pantalla 2025-10-01 192834.png)
 
 ### Vista Redimensionada
-![Comportamiento responsive](src/main/resources/captura-redimensionada.png)
+![Comportamiento responsive](capturas/Captura de pantalla 2025-10-01 181552.png)
 *Observar cómo el formulario y las pestañas crecen proporcionalmente*
-
-### JTabbedPane - Pestaña Resumen
-![Pestaña Resumen](src/main/resources/captura-resumen.png)
-
-### JTabbedPane - Pestaña Detalles
-![Pestaña Detalles](src/main/resources/captura-detalles.png)
 
 ---
 
@@ -168,20 +160,9 @@ El `main` inicia la aplicación en el EDT (Event Dispatch Thread) para threading
 
 ---
 
-## 👤 Autor
-
-**Gabriel Sánchez Heredia**
-- GitHub: [@gabiisnchez](https://github.com/gabiisnchez)
-- Email: gabiisnchez@proton.me
-
----
-
 ## 📄 Licencia
 
 Este proyecto fue desarrollado como parte del material educativo del curso de Desarrollo de Interfaces.
 
 ---
 
-## 🙏 Agradecimientos
-
-Proyecto realizado para la asignatura de Desarrollo de Interfaces - Tema 2: "Paneles y Layouts como profesionales"
