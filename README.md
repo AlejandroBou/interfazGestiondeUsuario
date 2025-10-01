@@ -48,7 +48,7 @@ JFrame (BorderLayout)
 
 ## 🎨 Wireframe
 
-![Wireframe del Gestor de Usuarios](capturas/Captura de pantalla 2025-10-01 181552.png)
+(capturas/Captura de pantalla 2025-10-01 181552.png)
 
 *Boceto inicial de la distribución de componentes en la interfaz*
 
