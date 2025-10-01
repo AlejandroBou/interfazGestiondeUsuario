@@ -100,10 +100,10 @@ JFrame (BorderLayout)
 ## 📸 Capturas de Pantalla
 
 ### Vista General
-![Vista general de la aplicación](capturas/Captura de pantalla 2025-10-01 192834.png)
+![Vista general de la aplicación](capturas/captura)
 
 ### Vista Redimensionada
-![Comportamiento responsive](capturas/Captura de pantalla 2025-10-01 181552.png)
+![Comportamiento responsive](capturas/captura-en-proceso)
 *Observar cómo el formulario y las pestañas crecen proporcionalmente*
 
 ---
